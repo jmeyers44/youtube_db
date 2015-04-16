@@ -3,9 +3,9 @@ class YouTube
 require 'sqlite3'
 require 'pry'
 
-DB = SQLite3::Database.new("../db/YouTube_Vids.db")
+DB = SQLite3::Database.new("db/YouTube_Vids.db")
 
-  attr_accessor :id, :name, :genre, :video_url, :display, :drop_table, :save
+  attr_accessor :id, :name, :genre, :video_url, :drop_table, :save
   
   
   def self.create_table
@@ -95,7 +95,7 @@ DB = SQLite3::Database.new("../db/YouTube_Vids.db")
     !!id
   end
 
-  def display
+  def self.display
     sql= <<-SQL
     SELECT * 
     FROM YouTube_Vids

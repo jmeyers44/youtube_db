@@ -1,14 +1,15 @@
 require_relative '../lib/YouTube_Data.rb'
 
-DB = SQLite3::Database.new("../db/YouTube_Vids.db")
+# DB = SQLite3::Database.new("db/YouTube_Vids.db")
 
 require 'pry'
 def run
-
+YouTube.create_table
 
 loop do
 puts "new, display or exit"
 trial = YouTube.new
+
 user_input = gets.chomp
 
 case user_input
@@ -22,8 +23,9 @@ case user_input
   trial.video_url = gets.chomp
   trial.save
   when "display"
-    show = DB.execute("SELECT * FROM YouTube_Vids;")
-   puts show
+   #  show = DB.execute("SELECT * FROM YouTube_Vids;")
+   # puts show
+   puts YouTube.display
   when "clear"
      sql = <<-SQL
     DROP TABLE YouTube_Vids
